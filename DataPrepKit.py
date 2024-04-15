@@ -29,6 +29,6 @@ def handle_missing_values(data_frame: pd.DataFrame, way: str, value=None):
         raise ValueError("enter a correct way.")
 
 
-def encoding(data_frame: pd.DataFrame):
-    keys = data_frame["name"].unique()
-    data_frame["name"].apply(lambda x: np.where(keys == x)[0][0])
+def encoding(column: pd.Series):
+    keys = column.unique()
+    return column.apply(lambda x: np.where(keys == x)[0][0])
